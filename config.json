@@ -27,15 +27,6 @@
       "conversationIdRegex": "\\/app\\/([a-f0-9]+)",
       "injectionMode": "execCommand"
     },
-    "chat.openai.com": {
-      "responseSelector": "div[data-message-author-role=\"assistant\"] .markdown",
-      "inputSelector": ["textarea#prompt-textarea", "[contenteditable=\"true\"][data-testid=\"textbox\"]"],
-      "submitSelector": ["button[data-testid=\"send-button\"]"],
-      "messageIdSelectors": ["[data-message-id]", ".group[id]", "article[id]"],
-      "messagesContainer": "main",
-      "conversationIdRegex": "\\/c\\/([a-f0-9-]+)",
-      "injectionMode": "paste"
-    },
     "chatgpt.com": {
       "responseSelector": "div[data-message-author-role=\"assistant\"] .markdown",
       "inputSelector": ["textarea#prompt-textarea", "[contenteditable=\"true\"][data-testid=\"textbox\"]"],
@@ -44,15 +35,6 @@
       "messagesContainer": "main",
       "conversationIdRegex": "\\/c\\/([a-f0-9-]+)",
       "injectionMode": "paste"
-    },
-    "grok.x.ai": {
-      "responseSelector": "[class*=\"message-text\"]",
-      "inputSelector": ["textarea", "[contenteditable=\"true\"]"],
-      "submitSelector": ["button[aria-label*=\"send\" i]"],
-      "messageIdSelectors": ["[data-message-id]"],
-      "messagesContainer": "body",
-      "conversationIdRegex": "\\/([a-f0-9-]+)",
-      "injectionMode": "native"
     }
   },
   "uiLabels": {
