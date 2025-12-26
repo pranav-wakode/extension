@@ -2,39 +2,71 @@
   "version": "1.0",
   "primingPrompt": "You have access to local tools: a filesystem and a terminal. To use the tools you MUST *only* reply with the tool commands, using the exact syntax below.\n\n**CRITICAL RULES:**\n1.  **MULTIPLE COMMANDS:** You can and SHOULD execute multiple tool calls in a single response.\n2.  **STOP SIGNAL:** For `createFile` and `writeFile`, immediately after the closing triple backticks (```), you MUST add a \"TOOL: operation complete\" command on a new line.\n\n**Filesystem Commands:**\n\n1.  Create Folder:\n    TOOL: filesystem create folder 'folder-name'\n\n2.  Create File:\n    TOOL: filesystem create file 'path/file.name' with content:\n    ```\n    file content goes here\n    ```\n    TOOL: operation complete\n\n3.  Write/Update File:\n    TOOL: filesystem write file 'path/file.name' with content:\n    ```\n    new content goes here\n    ```\n    TOOL: operation complete\n\n4.  Read File:\n    TOOL: filesystem read file 'path/file.name'\n\n5.  List Directory:\n    TOOL: filesystem list directory 'path/to/folder'\n    (Use '.' to list the current root directory)\n\n6.  Delete File:\n    TOOL: filesystem delete file 'path/file.name'\n\n7.  Delete Folder:\n    TOOL: filesystem delete folder 'path/to/folder'\n\n**Terminal Command:**\n\n1.  Run Command:\n    TOOL: terminal run 'command-to-run-in-shell'\n\nDo you understand all instructions?",
   "global": {
-    "commandRegex": "(?:TOOL|Tool):\\s*([a-zA-Z0-9_]+)",
+    "commandRegex": "TOOL:\\s*(filesystem|terminal)\\s+([a-zA-Z]+)\\s+(?:folder|file|directory|run)?\\s*['\"]([^'\"]*)['\"]",
     "feedback": {
-      "formId": "default_form_id",
-      "entryId": "default_entry_id",
-      "link": "[https://github.com/yourusername/ai-mcp-bridge/issues](https://github.com/yourusername/ai-mcp-bridge/issues)"
+      "formId": "",
+      "entryId": "",
+      "link": ""
     }
   },
   "notifications": [
     {
-      "id": "welcome_v1",
-      "title": "Welcome to v1.0",
-      "message": "AI MCP Bridge now supports remote updates!",
+      "id": "welcome",
+      "title": "AI MCP Bridge Active",
+      "message": "AI MCP Bridge is active on this site. It can enable local tools like file access for your AI interactions.",
       "active": true
     }
   ],
   "sites": {
     "gemini.google.com": {
+      "inputSelector": "rich-textarea, textarea, [contenteditable=\"true\"]",
+      "submitSelector": "button[aria-label*=\"send\" i], button[type=\"submit\"], [role=\"button\"][aria-label*=\"send\" i]",
       "responseSelector": "message-content .markdown",
-      "inputSelector": ["rich-textarea", "textarea", "[contenteditable=\"true\"]"],
-      "submitSelector": ["button[aria-label*=\"send\" i]"],
-      "messageIdSelectors": ["[jsname]", "[data-message-id]", "[data-aid]"],
       "messagesContainer": "body",
-      "conversationIdRegex": "\\/app\\/([a-f0-9]+)",
+      "messageIdSelectors": [
+        "[jsname]",
+        "[data-message-id]",
+        "[data-aid]"
+      ],
+      "conversationIdRegex": "/app/([a-f0-9]+)",
       "injectionMode": "execCommand"
     },
-    "chatgpt.com": {
-      "responseSelector": "div[data-message-author-role=\"assistant\"] .markdown",
-      "inputSelector": ["textarea#prompt-textarea", "[contenteditable=\"true\"][data-testid=\"textbox\"]"],
-      "submitSelector": ["button[data-testid=\"send-button\"]"],
-      "messageIdSelectors": ["[data-message-id]", ".group[id]", "article[id]"],
-      "messagesContainer": "main",
-      "conversationIdRegex": "\\/c\\/([a-f0-9-]+)",
+    "chat.openai.com": {
+      "inputSelector": "textarea#prompt-textarea, textarea[data-testid=\"prompt-textarea\"], textarea[data-testid=\"chat-input\"], [contenteditable=\"true\"][data-testid=\"textbox\"], [role=\"textbox\"][contenteditable=\"true\"]",
+      "submitSelector": "button[data-testid=\"send-button\"], button[aria-label=\"Send\"], button[aria-label*=\"send\" i], button[type=\"submit\"], [role=\"button\"][aria-label*=\"send\" i]",
+      "responseSelector": "div[data-message-author-role=\"assistant\"] .markdown, div[data-testid=\"conversation-turn\"] div[data-message-author-role=\"assistant\"] .markdown, article:has(div[data-message-author-role=\"assistant\"]) .markdown",
+      "messagesContainer": "main, div[data-testid=\"conversation\"], body",
+      "messageIdSelectors": [
+        "[data-message-id]",
+        ".group[id]",
+        "article[id]"
+      ],
+      "conversationIdRegex": "/c/([a-f0-9-]+)",
       "injectionMode": "paste"
+    },
+    "chatgpt.com": {
+      "inputSelector": "textarea#prompt-textarea, textarea[data-testid=\"prompt-textarea\"], textarea[data-testid=\"chat-input\"], [contenteditable=\"true\"][data-testid=\"textbox\"], [role=\"textbox\"][contenteditable=\"true\"]",
+      "submitSelector": "button[data-testid=\"send-button\"], button[aria-label=\"Send\"], button[aria-label*=\"send\" i], button[type=\"submit\"], [role=\"button\"][aria-label*=\"send\" i]",
+      "responseSelector": "div[data-message-author-role=\"assistant\"] .markdown, div[data-testid=\"conversation-turn\"] div[data-message-author-role=\"assistant\"] .markdown, article:has(div[data-message-author-role=\"assistant\"]) .markdown",
+      "messagesContainer": "main, div[data-testid=\"conversation\"], body",
+      "messageIdSelectors": [
+        "[data-message-id]",
+        ".group[id]",
+        "article[id]"
+      ],
+      "conversationIdRegex": "/c/([a-f0-9-]+)",
+      "injectionMode": "paste"
+    },
+    "grok.x.ai": {
+      "inputSelector": "textarea, [contenteditable=\"true\"]",
+      "submitSelector": "button[aria-label*=\"send\" i], button[type=\"submit\"], [role=\"button\"][aria-label*=\"send\" i]",
+      "responseSelector": "[class*=\"message-text\"]",
+      "messagesContainer": "body",
+      "messageIdSelectors": [
+        "[data-message-id]"
+      ],
+      "conversationIdRegex": "/([a-f0-9-]+)",
+      "injectionMode": "execCommand"
     }
   },
   "uiLabels": {
@@ -87,31 +119,41 @@
   },
   "cleaningPatterns": [
     {
-      "pattern": "^([a-zA-Z0-9_\\-\\s]*?)Copy code\\s*",
-      "flags": "i"
-    },
-    {
-      "pattern": "^```[a-zA-Z0-9\\+\\-\\.]*\\n?",
-      "flags": "i"
-    },
-    {
-      "pattern": "```\\s*$",
-      "flags": "i"
-    },
-    {
       "pattern": "\\\\n",
       "flags": "g",
-      "replacement": "\n"
+      "replacement": "\n",
+      "description": "Normalize escaped newlines"
     },
     {
       "pattern": "\\\\t",
       "flags": "g",
-      "replacement": "\t"
+      "replacement": "\t",
+      "description": "Normalize escaped tabs"
     },
     {
       "pattern": "\\\\\\\\",
       "flags": "g",
-      "replacement": "\\"
+      "replacement": "\\\\",
+      "description": "Normalize escaped backslashes"
+    },
+    {
+      "pattern": "^([a-zA-Z0-9_\\-\\s]*?)Copy code\\s*",
+      "flags": "i",
+      "replacement": "",
+      "description": "Remove 'Copy code' UI artifacts (ChatGPT)"
+    },
+    {
+      "pattern": "^```[a-zA-Z0-9\\+\\-\\.]*\\n?",
+      "flags": "i",
+      "replacement": "",
+      "description": "Remove opening markdown code fence"
+    },
+    {
+      "pattern": "```\\s*$",
+      "flags": "i",
+      "replacement": "",
+      "description": "Remove closing markdown code fence"
     }
   ]
 }
+
