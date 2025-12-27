@@ -1,157 +1,157 @@
 {
-    "version": "1.0.0",
-    "lastUpdated": "2024-12-26T00:00:00Z",
-    
-    "primingPrompt": "You have access to local tools: a filesystem and a terminal. To use the tools you MUST *only* reply with the tool commands, using the exact syntax below.\n\n**CRITICAL RULES:**\n1.  **MULTIPLE COMMANDS:** You can and SHOULD execute multiple tool calls in a single response.\n2.  **STOP SIGNAL:** For `createFile` and `writeFile`, immediately after the closing triple backticks (```), you MUST add a \"TOOL: operation complete\" command on a new line.\n\n**Filesystem Commands:**\n\n1.  Create Folder:\n    TOOL: filesystem create folder 'folder-name'\n\n2.  Create File:\n    TOOL: filesystem create file 'path/file.name' with content:\n    ```\n    file content goes here\n    ```\n    TOOL: operation complete\n\n3.  Write/Update File:\n    TOOL: filesystem write file 'path/file.name' with content:\n    ```\n    new content goes here\n    ```\n    TOOL: operation complete\n\n4.  Read File:\n    TOOL: filesystem read file 'path/file.name'\n\n5.  List Directory:\n    TOOL: filesystem list directory 'path/to/folder'\n    (Use '.' to list the current root directory)\n\n6.  Delete File:\n    TOOL: filesystem delete file 'path/file.name'\n\n7.  Delete Folder:\n    TOOL: filesystem delete folder 'path/to/folder'\n\n**Terminal Command:**\n\n1.  Run Command:\n    TOOL: terminal run 'command-to-run-in-shell'\n\nDo you understand all instructions?",
-    
-    "global": {
-      "commandRegex": "(?:TOOL|Tool):\\s*([a-zA-Z0-9_]+)",
-      "feedback": {
-        "formId": "1FAIpQLSc_PLACEHOLDER_FORM_ID",
-        "entryId": "entry.123456789",
-        "link": "https://docs.google.com/forms/d/e/PLACEHOLDER_FORM_ID/viewform"
-      }
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-26T00:00:00Z",
+  
+  "primingPrompt": "You have access to local tools: a filesystem and a terminal. To use the tools you MUST *only* reply with the tool commands, using the exact syntax below.\n\n**CRITICAL RULES:**\n1.  **MULTIPLE COMMANDS:** You can and SHOULD execute multiple tool calls in a single response.\n2.  **STOP SIGNAL:** For `createFile` and `writeFile`, immediately after the closing triple backticks (```), you MUST add a \"TOOL: operation complete\" command on a new line.\n\n**Filesystem Commands:**\n\n1.  Create Folder:\n    TOOL: filesystem create folder 'folder-name'\n\n2.  Create File:\n    TOOL: filesystem create file 'path/file.name' with content:\n    ```\n    file content goes here\n    ```\n    TOOL: operation complete\n\n3.  Write/Update File:\n    TOOL: filesystem write file 'path/file.name' with content:\n    ```\n    new content goes here\n    ```\n    TOOL: operation complete\n\n4.  Read File:\n    TOOL: filesystem read file 'path/file.name'\n\n5.  List Directory:\n    TOOL: filesystem list directory 'path/to/folder'\n    (Use '.' to list the current root directory)\n\n6.  Delete File:\n    TOOL: filesystem delete file 'path/file.name'\n\n7.  Delete Folder:\n    TOOL: filesystem delete folder 'path/to/folder'\n\n**Terminal Command:**\n\n1.  Run Command:\n    TOOL: terminal run 'command-to-run-in-shell'\n\nDo you understand all instructions?",
+  
+  "global": {
+    "commandRegex": "(?:TOOL|Tool):\\s*([a-zA-Z0-9_]+)",
+    "feedback": {
+      "formId": "1FAIpQLScVOF4MHELPUpE1_cDKhqOSqHCfbGsOxAZKRrec6MzVQYwwww",
+      "entryId": "entry.724779645",
+      "link": "https://docs.google.com/forms/d/e/1FAIpQLScVOF4MHELPUpE1_cDKhqOSqHCfbGsOxAZKRrec6MzVQYwwww/viewform"
+    }
+  },
+  
+  "notifications": [
+    {
+      "id": "welcome_v1",
+      "title": "🎉 Welcome to AI MCP Bridge!",
+      "message": "Thank you for installing! Select a directory to get started.",
+      "active": false
+    },
+    {
+      "id": "update_remote_config",
+      "title": "📡 Remote Configuration Active",
+      "message": "Your extension now updates automatically via remote config. No more manual updates!",
+      "active": false
+    }
+  ],
+  
+  "sites": {
+    "gemini.google.com": {
+      "displayName": "Google Gemini",
+      "inputSelector": "rich-textarea, textarea, [contenteditable=\"true\"]",
+      "submitSelector": "button[aria-label*=\"Send\" i], button[type=\"submit\"]",
+      "responseSelector": "message-content .markdown",
+      "messagesContainer": "body",
+      "messageIdSelectors": [
+        "[jsname]",
+        "[data-message-id]",
+        "[data-aid]"
+      ],
+      "conversationIdRegex": "/app/([a-f0-9]+)",
+      "injectionMode": "execCommand"
     },
     
-    "notifications": [
-      {
-        "id": "welcome_v1",
-        "title": "🎉 Welcome to AI MCP Bridge!",
-        "message": "Thank you for installing! Select a directory to get started.",
-        "active": false
-      },
-      {
-        "id": "update_remote_config",
-        "title": "📡 Remote Configuration Active",
-        "message": "Your extension now updates automatically via remote config. No more manual updates!",
-        "active": false
-      }
-    ],
-    
-    "sites": {
-      "gemini.google.com": {
-        "displayName": "Google Gemini",
-        "inputSelector": "rich-textarea, textarea, [contenteditable=\"true\"]",
-        "submitSelector": "button[aria-label*=\"Send\" i], button[type=\"submit\"]",
-        "responseSelector": "message-content .markdown",
-        "messagesContainer": "body",
-        "messageIdSelectors": [
-          "[jsname]",
-          "[data-message-id]",
-          "[data-aid]"
-        ],
-        "conversationIdRegex": "/app/([a-f0-9]+)",
-        "injectionMode": "execCommand"
-      },
-      
-      "chat.openai.com": {
-        "displayName": "ChatGPT",
-        "inputSelector": "textarea#prompt-textarea, textarea[data-testid=\"prompt-textarea\"], textarea[data-testid=\"chat-input\"], [contenteditable=\"true\"][data-testid=\"textbox\"], [role=\"textbox\"][contenteditable=\"true\"]",
-        "submitSelector": "button[data-testid=\"send-button\"], button[aria-label=\"Send\"], button[aria-label*=\"send\" i]",
-        "responseSelector": "div[data-message-author-role=\"assistant\"] .markdown, div[data-testid=\"conversation-turn\"] div[data-message-author-role=\"assistant\"] .markdown, article:has(div[data-message-author-role=\"assistant\"]) .markdown",
-        "messagesContainer": "main, div[data-testid=\"conversation\"], body",
-        "messageIdSelectors": [
-          "[data-message-id]",
-          ".group[id]",
-          "article[id]"
-        ],
-        "conversationIdRegex": "/c/([a-f0-9-]+)",
-        "injectionMode": "paste"
-      },
-      
-      "chatgpt.com": {
-        "displayName": "ChatGPT",
-        "inputSelector": "textarea#prompt-textarea, textarea[data-testid=\"prompt-textarea\"], textarea[data-testid=\"chat-input\"], [contenteditable=\"true\"][data-testid=\"textbox\"], [role=\"textbox\"][contenteditable=\"true\"]",
-        "submitSelector": "button[data-testid=\"send-button\"], button[aria-label=\"Send\"], button[aria-label*=\"send\" i]",
-        "responseSelector": "div[data-message-author-role=\"assistant\"] .markdown, div[data-testid=\"conversation-turn\"] div[data-message-author-role=\"assistant\"] .markdown, article:has(div[data-message-author-role=\"assistant\"]) .markdown",
-        "messagesContainer": "main, div[data-testid=\"conversation\"], body",
-        "messageIdSelectors": [
-          "[data-message-id]",
-          ".group[id]",
-          "article[id]"
-        ],
-        "conversationIdRegex": "/c/([a-f0-9-]+)",
-        "injectionMode": "paste"
-      },
-      
-      "grok.x.ai": {
-        "displayName": "Grok (X AI)",
-        "inputSelector": "textarea, [contenteditable=\"true\"]",
-        "submitSelector": "button[aria-label*=\"Send\" i], button[type=\"submit\"]",
-        "responseSelector": "[class*=\"message-text\"]",
-        "messagesContainer": "body",
-        "messageIdSelectors": [
-          "[data-message-id]"
-        ],
-        "conversationIdRegex": "/([a-f0-9-]+)",
-        "injectionMode": "execCommand"
-      }
+    "chat.openai.com": {
+      "displayName": "ChatGPT",
+      "inputSelector": "textarea#prompt-textarea, textarea[data-testid=\"prompt-textarea\"], textarea[data-testid=\"chat-input\"], [contenteditable=\"true\"][data-testid=\"textbox\"], [role=\"textbox\"][contenteditable=\"true\"]",
+      "submitSelector": "button[data-testid=\"send-button\"], button[aria-label=\"Send\"], button[aria-label*=\"send\" i]",
+      "responseSelector": "div[data-message-author-role=\"assistant\"] .markdown, div[data-testid=\"conversation-turn\"] div[data-message-author-role=\"assistant\"] .markdown, article:has(div[data-message-author-role=\"assistant\"]) .markdown",
+      "messagesContainer": "main, div[data-testid=\"conversation\"], body",
+      "messageIdSelectors": [
+        "[data-message-id]",
+        ".group[id]",
+        "article[id]"
+      ],
+      "conversationIdRegex": "/c/([a-f0-9-]+)",
+      "injectionMode": "paste"
     },
     
-    "uiLabels": {
-      "js": ["javascript", "js", "node", "ecmascript"],
-      "jsx": ["jsx", "javascript", "react"],
-      "ts": ["typescript", "ts"],
-      "tsx": ["tsx", "typescript", "react"],
-      "html": ["html", "htm", "xml", "php-template", "php"],
-      "css": ["css", "scss"],
-      "scss": ["scss", "css", "sass"],
-      "less": ["less", "css"],
-      "vue": ["vue", "html", "javascript"],
-      "json": ["json", "jsonc"],
-      "xml": ["xml", "html", "svg"],
-      "svg": ["svg", "xml"],
-      "py": ["python", "py", "python3"],
-      "sh": ["bash", "sh", "shell", "zsh"],
-      "bash": ["bash", "sh", "shell"],
-      "zsh": ["zsh", "bash", "sh"],
-      "bat": ["batch", "bat", "cmd", "dos"],
-      "ps1": ["powershell", "ps1", "pwsh"],
-      "php": ["php", "html"],
-      "rb": ["ruby", "rb"],
-      "lua": ["lua"],
-      "pl": ["perl", "pl"],
-      "go": ["go", "golang"],
-      "rs": ["rust", "rs"],
-      "java": ["java"],
-      "kt": ["kotlin", "kt"],
-      "cs": ["csharp", "cs", "c#"],
-      "cpp": ["cpp", "c++", "cxx", "c"],
-      "c": ["c", "cpp"],
-      "h": ["c", "cpp", "header"],
-      "hpp": ["cpp", "c", "header"],
-      "swift": ["swift"],
-      "r": ["r"],
-      "v": ["verilog", "v", "java", "rust"],
-      "sv": ["systemverilog", "verilog"],
-      "vhdl": ["vhdl"],
-      "yaml": ["yaml", "yml"],
-      "yml": ["yaml", "yml"],
-      "toml": ["toml"],
-      "ini": ["ini"],
-      "sql": ["sql", "mysql", "postgresql", "sqlite"],
-      "md": ["markdown", "md"],
-      "txt": ["text", "txt", "plaintext", "sql", "json", "markdown", "log", "xml"],
-      "dockerfile": ["dockerfile", "docker"],
-      "tf": ["terraform", "hcl", "tf"],
-      "conf": ["config", "conf", "nginx", "apache"]
+    "chatgpt.com": {
+      "displayName": "ChatGPT",
+      "inputSelector": "textarea#prompt-textarea, textarea[data-testid=\"prompt-textarea\"], textarea[data-testid=\"chat-input\"], [contenteditable=\"true\"][data-testid=\"textbox\"], [role=\"textbox\"][contenteditable=\"true\"]",
+      "submitSelector": "button[data-testid=\"send-button\"], button[aria-label=\"Send\"], button[aria-label*=\"send\" i]",
+      "responseSelector": "div[data-message-author-role=\"assistant\"] .markdown, div[data-testid=\"conversation-turn\"] div[data-message-author-role=\"assistant\"] .markdown, article:has(div[data-message-author-role=\"assistant\"]) .markdown",
+      "messagesContainer": "main, div[data-testid=\"conversation\"], body",
+      "messageIdSelectors": [
+        "[data-message-id]",
+        ".group[id]",
+        "article[id]"
+      ],
+      "conversationIdRegex": "/c/([a-f0-9-]+)",
+      "injectionMode": "paste"
     },
     
-    "cleaningPatterns": [
-      {
-        "pattern": "^([a-zA-Z0-9_\\-\\s]*?)Copy code\\s*",
-        "flags": "i",
-        "description": "Remove 'Copy code' UI artifacts from ChatGPT"
-      },
-      {
-        "pattern": "^```[a-zA-Z0-9\\+\\-\\.]*\\n?",
-        "flags": "i",
-        "description": "Remove opening markdown fence"
-      },
-      {
-        "pattern": "```\\s*$",
-        "flags": "i",
-        "description": "Remove closing markdown fence"
-      }
-    ]
-  }
+    "grok.x.ai": {
+      "displayName": "Grok (X AI)",
+      "inputSelector": "textarea, [contenteditable=\"true\"]",
+      "submitSelector": "button[aria-label*=\"Send\" i], button[type=\"submit\"]",
+      "responseSelector": "[class*=\"message-text\"]",
+      "messagesContainer": "body",
+      "messageIdSelectors": [
+        "[data-message-id]"
+      ],
+      "conversationIdRegex": "/([a-f0-9-]+)",
+      "injectionMode": "execCommand"
+    }
+  },
+  
+  "uiLabels": {
+    "js": ["javascript", "js", "node", "ecmascript"],
+    "jsx": ["jsx", "javascript", "react"],
+    "ts": ["typescript", "ts"],
+    "tsx": ["tsx", "typescript", "react"],
+    "html": ["html", "htm", "xml", "php-template", "php"],
+    "css": ["css", "scss"],
+    "scss": ["scss", "css", "sass"],
+    "less": ["less", "css"],
+    "vue": ["vue", "html", "javascript"],
+    "json": ["json", "jsonc"],
+    "xml": ["xml", "html", "svg"],
+    "svg": ["svg", "xml"],
+    "py": ["python", "py", "python3"],
+    "sh": ["bash", "sh", "shell", "zsh"],
+    "bash": ["bash", "sh", "shell"],
+    "zsh": ["zsh", "bash", "sh"],
+    "bat": ["batch", "bat", "cmd", "dos"],
+    "ps1": ["powershell", "ps1", "pwsh"],
+    "php": ["php", "html"],
+    "rb": ["ruby", "rb"],
+    "lua": ["lua"],
+    "pl": ["perl", "pl"],
+    "go": ["go", "golang"],
+    "rs": ["rust", "rs"],
+    "java": ["java"],
+    "kt": ["kotlin", "kt"],
+    "cs": ["csharp", "cs", "c#"],
+    "cpp": ["cpp", "c++", "cxx", "c"],
+    "c": ["c", "cpp"],
+    "h": ["c", "cpp", "header"],
+    "hpp": ["cpp", "c", "header"],
+    "swift": ["swift"],
+    "r": ["r"],
+    "v": ["verilog", "v", "java", "rust"],
+    "sv": ["systemverilog", "verilog"],
+    "vhdl": ["vhdl"],
+    "yaml": ["yaml", "yml"],
+    "yml": ["yaml", "yml"],
+    "toml": ["toml"],
+    "ini": ["ini"],
+    "sql": ["sql", "mysql", "postgresql", "sqlite"],
+    "md": ["markdown", "md"],
+    "txt": ["text", "txt", "plaintext", "sql", "json", "markdown", "log", "xml"],
+    "dockerfile": ["dockerfile", "docker"],
+    "tf": ["terraform", "hcl", "tf"],
+    "conf": ["config", "conf", "nginx", "apache"]
+  },
+  
+  "cleaningPatterns": [
+    {
+      "pattern": "^([a-zA-Z0-9_\\-\\s]*?)Copy code\\s*",
+      "flags": "i",
+      "description": "Remove 'Copy code' UI artifacts from ChatGPT"
+    },
+    {
+      "pattern": "^```[a-zA-Z0-9\\+\\-\\.]*\\n?",
+      "flags": "i",
+      "description": "Remove opening markdown fence"
+    },
+    {
+      "pattern": "```\\s*$",
+      "flags": "i",
+      "description": "Remove closing markdown fence"
+    }
+  ]
+}
