@@ -18,13 +18,13 @@
       "id": "welcome_v1",
       "title": "🎉 Welcome to AI MCP Bridge!",
       "message": "Thank you for installing! Select a directory to get started.",
-      "active": false
+      "active": true
     },
     {
       "id": "update_remote_config",
       "title": "📡 Remote Configuration Active",
       "message": "Your extension now updates automatically via remote config. No more manual updates!",
-      "active": false
+      "active": true
     }
   ],
   
