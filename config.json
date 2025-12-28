@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "lastUpdated": "2024-12-26T00:00:00Z",
+  "version": "1.0.1",
+  "lastUpdated": "2024-12-28T12:00:00Z",
   
   "primingPrompt": "You have access to local tools: a filesystem and a terminal. To use the tools you MUST *only* reply with the tool commands, using the exact syntax below.\n\n**CRITICAL RULES:**\n1.  **MULTIPLE COMMANDS:** You can and SHOULD execute multiple tool calls in a single response.\n2.  **STOP SIGNAL:** For `createFile` and `writeFile`, immediately after the closing triple backticks (```), you MUST add a \"TOOL: operation complete\" command on a new line.\n\n**Filesystem Commands:**\n\n1.  Create Folder:\n    TOOL: filesystem create folder 'folder-name'\n\n2.  Create File:\n    TOOL: filesystem create file 'path/file.name' with content:\n    ```\n    file content goes here\n    ```\n    TOOL: operation complete\n\n3.  Write/Update File:\n    TOOL: filesystem write file 'path/file.name' with content:\n    ```\n    new content goes here\n    ```\n    TOOL: operation complete\n\n4.  Read File:\n    TOOL: filesystem read file 'path/file.name'\n\n5.  List Directory:\n    TOOL: filesystem list directory 'path/to/folder'\n    (Use '.' to list the current root directory)\n\n6.  Delete File:\n    TOOL: filesystem delete file 'path/file.name'\n\n7.  Delete Folder:\n    TOOL: filesystem delete folder 'path/to/folder'\n\n**Terminal Command:**\n\n1.  Run Command:\n    TOOL: terminal run 'command-to-run-in-shell'\n\nDo you understand all instructions?",
   
@@ -8,8 +8,8 @@
     "commandRegex": "(?:TOOL|Tool):\\s*([a-zA-Z0-9_]+)",
     "feedback": {
       "formId": "1FAIpQLScVOF4MHELPUpE1_cDKhqOSqHCfbGsOxAZKRrec6MzVQYwwww",
-      "entryId": "entry.724779645",
-      "link": "https://docs.google.com/forms/d/e/1FAIpQLScVOF4MHELPUpE1_cDKhqOSqHCfbGsOxAZKRrec6MzVQYwwww/viewform"
+      "entryId": "724779645",
+      "link": "[https://docs.google.com/forms/d/e/1FAIpQLScVOF4MHELPUpE1_cDKhqOSqHCfbGsOxAZKRrec6MzVQYwwww/viewform](https://docs.google.com/forms/d/e/1FAIpQLScVOF4MHELPUpE1_cDKhqOSqHCfbGsOxAZKRrec6MzVQYwwww/viewform)"
     }
   },
   
@@ -21,9 +21,19 @@
       "active": true
     },
     {
-      "id": "update_remote_config",
-      "title": "📡 Remote Configuration Active",
-      "message": "Your extension now updates automatically via remote config. No more manual updates!",
+      "id": "tutorial_video_01",
+      "title": "📺 Watch the Tutorial",
+      "message": "Confused? Watch our 2-minute quick start guide on YouTube.",
+      "link": "[https://www.youtube.com](https://www.youtube.com)",
+      "linkText": "Watch Video",
+      "active": true
+    },
+    {
+      "id": "community_invite",
+      "title": "💬 Join the Community",
+      "message": "Join our WhatsApp channel for updates and tips.",
+      "link": "[https://whatsapp.com/channel/](https://whatsapp.com/channel/)...",
+      "linkText": "Join Channel",
       "active": true
     }
   ],
