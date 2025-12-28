@@ -1,6 +1,6 @@
 {
-  "version": "1.0.1",
-  "lastUpdated": "2024-12-28T12:00:00Z",
+  "version": "1.0.3",
+  "lastUpdated": "2024-12-29T10:00:00Z",
   
   "primingPrompt": "You have access to local tools: a filesystem and a terminal. To use the tools you MUST *only* reply with the tool commands, using the exact syntax below.\n\n**CRITICAL RULES:**\n1.  **MULTIPLE COMMANDS:** You can and SHOULD execute multiple tool calls in a single response.\n2.  **STOP SIGNAL:** For `createFile` and `writeFile`, immediately after the closing triple backticks (```), you MUST add a \"TOOL: operation complete\" command on a new line.\n\n**Filesystem Commands:**\n\n1.  Create Folder:\n    TOOL: filesystem create folder 'folder-name'\n\n2.  Create File:\n    TOOL: filesystem create file 'path/file.name' with content:\n    ```\n    file content goes here\n    ```\n    TOOL: operation complete\n\n3.  Write/Update File:\n    TOOL: filesystem write file 'path/file.name' with content:\n    ```\n    new content goes here\n    ```\n    TOOL: operation complete\n\n4.  Read File:\n    TOOL: filesystem read file 'path/file.name'\n\n5.  List Directory:\n    TOOL: filesystem list directory 'path/to/folder'\n    (Use '.' to list the current root directory)\n\n6.  Delete File:\n    TOOL: filesystem delete file 'path/file.name'\n\n7.  Delete Folder:\n    TOOL: filesystem delete folder 'path/to/folder'\n\n**Terminal Command:**\n\n1.  Run Command:\n    TOOL: terminal run 'command-to-run-in-shell'\n\nDo you understand all instructions?",
   
@@ -21,19 +21,17 @@
       "active": true
     },
     {
-      "id": "tutorial_video_01",
-      "title": "📺 Watch the Tutorial",
-      "message": "Confused? Watch our 2-minute quick start guide on YouTube.",
-      "link": "[https://www.youtube.com](https://www.youtube.com)",
-      "linkText": "Watch Video",
+      "id": "chatgpt_fix_v2",
+      "title": "⚡ ChatGPT Fixed",
+      "message": "We've updated the configuration to support the new ChatGPT layout.",
       "active": true
     },
     {
-      "id": "community_invites",
-      "title": "💬 Join the Community",
-      "message": "Join our WhatsApp channel for updates and tips.",
-      "link": "[https://whatsapp.com/channel/](https://whatsapp.com/channel/)...",
-      "linkText": "Join Channel",
+      "id": "tutorial_link_01",
+      "title": "📺 Watch Tutorial",
+      "message": "See how to use the new features in our latest video.",
+      "link": "[https://www.youtube.com](https://www.youtube.com)",
+      "linkText": "Watch Video",
       "active": true
     }
   ],
@@ -54,24 +52,9 @@
       "injectionMode": "execCommand"
     },
     
-    "chat.openai.com": {
-      "displayName": "ChatGPT",
-      "inputSelector": "textarea#prompt-textarea, textarea[data-testid=\"prompt-textarea\"], textarea[data-testid=\"chat-input\"], [contenteditable=\"true\"][data-testid=\"textbox\"], [role=\"textbox\"][contenteditable=\"true\"]",
-      "submitSelector": "button[data-testid=\"send-button\"], button[aria-label=\"Send\"], button[aria-label*=\"send\" i]",
-      "responseSelector": "div[data-message-author-role=\"assistant\"] .markdown, div[data-testid=\"conversation-turn\"] div[data-message-author-role=\"assistant\"] .markdown, article:has(div[data-message-author-role=\"assistant\"]) .markdown",
-      "messagesContainer": "main, div[data-testid=\"conversation\"], body",
-      "messageIdSelectors": [
-        "[data-message-id]",
-        ".group[id]",
-        "article[id]"
-      ],
-      "conversationIdRegex": "/c/([a-f0-9-]+)",
-      "injectionMode": "paste"
-    },
-    
     "chatgpt.com": {
       "displayName": "ChatGPT",
-      "inputSelector": "textarea#prompt-textarea, textarea[data-testid=\"prompt-textarea\"], textarea[data-testid=\"chat-input\"], [contenteditable=\"true\"][data-testid=\"textbox\"], [role=\"textbox\"][contenteditable=\"true\"]",
+      "inputSelector": "#prompt-textarea, .ProseMirror, div[contenteditable=\"true\"]",
       "submitSelector": "button[data-testid=\"send-button\"], button[aria-label=\"Send\"], button[aria-label*=\"send\" i]",
       "responseSelector": "div[data-message-author-role=\"assistant\"] .markdown, div[data-testid=\"conversation-turn\"] div[data-message-author-role=\"assistant\"] .markdown, article:has(div[data-message-author-role=\"assistant\"]) .markdown",
       "messagesContainer": "main, div[data-testid=\"conversation\"], body",
@@ -82,19 +65,6 @@
       ],
       "conversationIdRegex": "/c/([a-f0-9-]+)",
       "injectionMode": "paste"
-    },
-    
-    "grok.x.ai": {
-      "displayName": "Grok (X AI)",
-      "inputSelector": "textarea, [contenteditable=\"true\"]",
-      "submitSelector": "button[aria-label*=\"Send\" i], button[type=\"submit\"]",
-      "responseSelector": "[class*=\"message-text\"]",
-      "messagesContainer": "body",
-      "messageIdSelectors": [
-        "[data-message-id]"
-      ],
-      "conversationIdRegex": "/([a-f0-9-]+)",
-      "injectionMode": "execCommand"
     }
   },
   
@@ -126,8 +96,8 @@
     "java": ["java"],
     "kt": ["kotlin"],
     "cs": ["c#", "c++", "c"],
-    "cpp": ["c++", "c#", "c"],
-    "c": ["c", "c++", "c#"],
+    "cpp": ["c++", "c"],
+    "c": ["c", "c++"],
     "h": ["c", "c++", "header"],
     "hpp": ["c++", "c", "header"],
     "swift": ["swift"],
@@ -144,7 +114,7 @@
     "txt": ["text", "plaintext"],
     "dockerfile": ["dockerfile", "docker"],
     "tf": ["terraform"],
-    "conf": ["config", "conf", "code snippet"]
+    "conf": ["config", "conf", "code snippet", "nginx"]
   },
   
   "cleaningPatterns": [
