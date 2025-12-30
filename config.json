@@ -21,7 +21,7 @@
       "active": true
     },
     {
-      "id": "chatgpt_fix_v2",
+      "id": "chatgpt_fix_v1",
       "title": "⚡ ChatGPT Fixed",
       "message": "We've updated the configuration to support the new ChatGPT layout.",
       "active": true
@@ -95,11 +95,11 @@
     "rs": ["rust"],
     "java": ["java"],
     "kt": ["kotlin"],
-    "cs": ["c#", "c++", "c"],
+    "cs": ["c#", "c++"],
     "cpp": ["c++", "c"],
     "c": ["c", "c++"],
-    "h": ["c", "c++", "header"],
-    "hpp": ["c++", "c", "header"],
+    "h": ["c++", "header"],
+    "hpp": ["c++", "header"],
     "swift": ["swift"],
     "r": ["r"],
     "v": ["verilog"],
