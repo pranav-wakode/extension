@@ -39,14 +39,15 @@
   "sites": {
     "gemini.google.com": {
       "displayName": "Google Gemini",
-      "inputSelector": "rich-textarea, textarea, [contenteditable=\"true\"]",
+      "inputSelector": "rich-textarea p, rich-textarea, textarea, [contenteditable=\"true\"]",
       "submitSelector": "button[aria-label*=\"Send\" i], button[type=\"submit\"]",
-      "responseSelector": "message-content .markdown",
-      "messagesContainer": "body",
+      "responseSelector": "message-content .markdown-main-panel, message-content .markdown",
+      "messagesContainer": "body, main, infinite-scroller",
       "messageIdSelectors": [
-        "[jsname]",
+        "message-content[id]",
+        "[id^=\"message-content-id\"]",
         "[data-message-id]",
-        "[data-aid]"
+        "[jsname]"
       ],
       "conversationIdRegex": "/app/([a-f0-9]+)",
       "injectionMode": "execCommand"
